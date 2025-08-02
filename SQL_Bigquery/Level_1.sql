@@ -20,6 +20,7 @@
 ```sql
 SELECT *
 FROM `Basic.trainer`;
+```
 
 
 
