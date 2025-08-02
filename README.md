@@ -8,7 +8,6 @@ Each file represents different levels of SQL difficulty and practice topics.
 ├── Level_1.sql # Basic SELECT queries
 ├── Level_2.sql # GROUP BY, HAVING, Aggregation
 ├── Level_3.sql # JOINs, subqueries, more advanced patterns
-
 📄 README.md # Overview of this project
 
 ## ✍️ Notes
