@@ -1,6 +1,7 @@
 # Data Analysis Practice
 
-This repository contains SQL practice queries written for Google BigQuery.
+This repository contains SQL practice queries using Google BigQuery.  
+Each file represents different levels of SQL difficulty and practice topics.
 
 ## 📁 Repository Structure
 📁 SQL_Bigquery/
@@ -10,12 +11,9 @@ This repository contains SQL practice queries written for Google BigQuery.
 
 📄 README.md # Overview of this project
 
-yaml
-
----
-
 ## ✍️ Notes
 
-- Practiced along with YouTube tutorial series on BigQuery
-- Dataset: Custom-created dataset on my Google BigQuery project
-- Purpose: For learning, reviewing, and portfolio tracking
+- Practiced while following a YouTube tutorial series on SQL for BigQuery
+- Dataset: Custom-created dataset uploaded to my own Google BigQuery project
+- Purpose: To deepen understanding of SQL and BigQuery through hands-on exercises
+
