@@ -16,10 +16,6 @@
 ## 🟡 Question 1
 1. Write an SQL query to display all data from the trainer table. 
 
-```sql
-SELECT *
-FROM `Basic.trainer`;
-```
-
+  
 
 
