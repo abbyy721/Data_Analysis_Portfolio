@@ -3,7 +3,7 @@
 
 CREATE, UPDATE, SELECT, CTE, JOINS, OREDR BY, GROUP BY
 
--- 📘 Table Reference: `trainer`
+-- 📘 Table Reference (1) : `trainer`
 -- 
 -- | column                 | type   | description                            |
 -- |------------------------|--------|----------------------------------------|
