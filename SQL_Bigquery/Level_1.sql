@@ -19,7 +19,7 @@
 
 ```sql
 SELECT *
-FROM `Basic.trainer`
+FROM `Basic.trainer`;
 
 
 
