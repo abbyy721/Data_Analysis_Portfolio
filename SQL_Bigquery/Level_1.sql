@@ -12,7 +12,6 @@
 | badge_count            | INT    | Number of badges earned                |
 | achievement_level      | STRING | Level: Beginner / Intermediate / etc.  |
 
-----------------------------------------------------------------------------
 
 ## 🟡 Question 1
 1. Write an SQL query to display all data from the trainer table. 
