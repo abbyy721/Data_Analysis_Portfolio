@@ -1,7 +1,7 @@
 /* 
 
 🔹 Level 1 – Basic SQL Queries
-🔸 Skills used : SELECT, FROM, WHERE, GROUP BY, ORDER BY
+🔸 Skills used : SELECT, FROM, WHERE, GROUP BY, ORDER BY, HAVING
 
 
 
@@ -32,7 +32,22 @@
 | special_defense   | INT     | Special Defense stat                |
 | speed             | INT     | Speed stat                          |
 | generation        | INT     | Generation number                   |
-| is_legendary      | BOOLEAN | Whether the Pokémon is legendary    | */
+| is_legendary      | BOOLEAN | Whether the Pokémon is legendary    | 
+
+-- 📘 Table Reference (3): `trainer_pokemon`
+
+-- | column           | type     | description                                     |
+-- |------------------|----------|-------------------------------------------------|
+-- | id               | INT      | Unique ID for each trainer's Pokémon entry     |
+-- | trainer_id       | INT      | Foreign key referencing the trainer            |
+-- | pokemon_id       | INT      | Foreign key referencing the Pokémon            |
+-- | level            | INT      | Pokémon's current level                        |
+-- | experience_point | INT      | Accumulated experience points                  |
+-- | current_health   | INT      | Pokémon's current HP                           |
+-- | catch_date       | DATE     | The date the Pokémon was caught                |
+-- | catch_datetime   | DATETIME | Full timestamp of when the Pokémon was caught  |
+-- | location         | STRING   | Location where the Pokémon was caught          |
+-- | status           | STRING   | Status of the Pokémon (e.g., Active, Inactive) |*/
 
 
 
@@ -163,6 +178,113 @@ GROUP BY
 ORDER BY 
   is_legendary DESC 
 
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Which names are shared by more than one trainer? */
+
+  
+SELECT
+  name,
+  COUNT(name) AS cnt_name
+FROM Basic.trainer
+GROUP BY name 
+HAVING cnt_name >= 2
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Retrieve all information about the trainers named 'Iris','Cynthia',and 'Whitney'. */
+
+
+SELECT
+  *
+FROM Basic.trainer
+WHERE name IN ("Iris","Cynthia","Whitney")
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Among the Pokémon that have a secondary type (type2), which primary type (type1) appears most frequently? */
+
+
+SELECT
+  type1,
+  count(id) as cnt_type1,
+FROM `Basic.Pokemon`
+WHERE 
+  type2 IS NOT NULL
+GROUP BY 
+  type1
+ORDER BY 
+  cnt_type1 DESC
+LIMIT 1
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* List the Pokémon whose Korean name contains the substring "파".*/
+
+
+SELECT
+  kor_name
+FROM `Basic.Pokemon`
+WHERE
+  kor_name like "%파%" 
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* How many trainers have 6 or more badges?*/
+
+  
+SELECT
+  count(id) total_trainer
+FROM `Basic.trainer`
+WHERE 
+  badge_count >= 6
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Which trainer owns the highest number of Pokémon? */
+
+
+SELECT 
+  trainer_id,
+  count(pokemon_id) as cnt_pokemon
+FROM `Basic.trainer_pokemon`
+WHERE 
+  status != "Released"
+GROUP BY 
+  trainer_id
+ORDER BY 
+  cnt_pokemon DESC
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Which trainers have released more than 20% of their Pokémon?
+(Released Pokémon Ratio = Number of Released Pokémon / Total Number of Pokémon)*/
+
+
+SELECT
+  trainer_id,
+  countif(status = "Released") as cnt_released,
+  count(id) as total_pokemon,
+  round(countif(status = "Released")/count(id)*100,2) as ratio
+FROM `Basic.trainer_pokemon`
+GROUP BY 
+  trainer_id
+HAVING 
+  ratio >= 20
 
 
 
