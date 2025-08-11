@@ -96,9 +96,26 @@ WHERE
   EXTRACT (HOUR FROM DATETIME(battle_timestamp, "Asia/Seoul")) BETWEEN 6 AND 18 
 
 
+--------------------------------------------------------------------------------------------------------------------------
 
 
+/* For each trainer, find the first day they caught a Pokémon using catch_datetime
+(since catch_date is of type DATE) and output that date in the DD/MM/YYYY format.*/
 
+
+SELECT 
+  trainer_id, 
+  FORMAT_DATETIME('%d/%m/%Y', min_catch_datetime) AS initial_date
+FROM(
+  SELECT
+    trainer_id, 
+    MIN(catch_datetime) AS min_catch_datetime
+  FROM `Basic.trainer_pokemon`
+  GROUP BY   
+    trainer_id
+  )
+ORDER BY
+  trainer_id
 
 
 
