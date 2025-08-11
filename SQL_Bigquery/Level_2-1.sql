@@ -75,7 +75,7 @@ WHERE catch_date != catch_datetime_kr_date
 
 -- Step 2: Calculate the number of Pokémon caught in January 2023.
 SELECT
-    
+  COUNT (DISTINT id) as cnt_pokemon
 FROM `Basic.trainer_pokemon`
 WHERE 
   EXTRACT (YEAR FROM DATETIME(catch_datetime, "Asia/Seoul")) = 2023 
@@ -116,6 +116,31 @@ FROM(
   )
 ORDER BY
   trainer_id
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Sort trainers in descending order by the interval between the first and last day they caught a Pokémon, 
+using catch_datetime and converting from UTC to Korea Standard Time (KST).*/
+
+
+SELECT
+  trainer_id, 
+  catch_date_min, 
+  catch_date_max,
+  DATETIME_DIFF(catch_date_max, catch_date_min, DAY) AS day_gap
+FROM (
+  SELECT
+    trainer_id, 
+    MIN(DATETIME(catch_datetime, 'Asia/Seoul')) AS catch_date_min, 
+    MAX(DATETIME(catch_datetime, 'Asia/Seoul')) AS catch_date_max, 
+  FROM `Basic.trainer_pokemon`
+  GROUP BY 
+    trainer_id 
+  )
+ORDER BY 
+  day_gap DESC 
 
 
 
