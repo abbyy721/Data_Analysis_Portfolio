@@ -51,6 +51,7 @@
 -- | status           | STRING   | Status of the Pokémon (e.g., Active, Inactive) |*/
 
 
+--------------------------------------------------------------------------------------------------------------------------
 
 
 📄 Questions
@@ -81,10 +82,18 @@ WHERE
   AND EXTRACT (MONTH FROM DATETIME(catch_datetime, "Asia/Seoul")) = 1
 
 
-/*Based on the trainer's Pokémon catch date (catch_date), 
-calculate the number of Pokémon caught in January 2023. */
+--------------------------------------------------------------------------------------------------------------------------
 
 
+/*Based on the battle time (battle_datetime), 
+calculate the number of battles that occurred between 6:00 AM and 6:00 PM. */
+
+
+SELECT
+  COUNT (DISTINCT id) AS cnt_battle
+FROM `Basic.battle`
+WHERE 
+  EXTRACT (HOUR FROM DATETIME(battle_timestamp, "Asia/Seoul")) BETWEEN 6 AND 18 
 
 
 
