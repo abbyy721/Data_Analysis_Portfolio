@@ -55,6 +55,46 @@
 
 📄 Questions
 
+  
+/*Based on the trainer's Pokémon catch date (catch_date), 
+calculate the number of Pokémon caught in January 2023. */
+
+  
+-- Step 1: Data validation — Check whether catch_date and catch_datetime are in the same time zone.
+
+SELECT
+  *
+FROM (
+SELECT 
+  id,
+  catch_date, 
+  DATE(DATETIME(catch_datetime, "Asia/Seoul")) AS catch_datetime_kr_date
+FROM `Basic.trainer_pokemon`)
+WHERE catch_date != catch_datetime_kr_date 
+
+-- Step 2: Calculate the number of Pokémon caught in January 2023.
+SELECT
+    
+FROM `Basic.trainer_pokemon`
+WHERE 
+  EXTRACT (YEAR FROM DATETIME(catch_datetime, "Asia/Seoul")) = 2023 
+  AND EXTRACT (MONTH FROM DATETIME(catch_datetime, "Asia/Seoul")) = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
