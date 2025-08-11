@@ -81,7 +81,8 @@ WHERE
   AND EXTRACT (MONTH FROM DATETIME(catch_datetime, "Asia/Seoul")) = 1
 
 
-
+/*Based on the trainer's Pokémon catch date (catch_date), 
+calculate the number of Pokémon caught in January 2023. */
 
 
 
