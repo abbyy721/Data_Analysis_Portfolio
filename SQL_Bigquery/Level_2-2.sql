@@ -1,10 +1,7 @@
 /* 
 
 🔹 Level 2 – Advanced SQL Queries
-🔸 Skills used : 
-- STRING FUNCTIONS (CONCAT, SPLIT, REPLACE, TRIM, UPPER)
-- DATE/TIME FUNCTIONS (TIMESTAMP, DATETIME, EXTRACT, TRUNC, PARSE, FORMAT, LAST_DAY, DATETIME_DIFF )
-
+🔸 Skills used : CASE/WHEN
 
 📘 Table Reference (1) : `trainer`
 | column                 | type   | description                            |
@@ -35,7 +32,7 @@
 | generation        | INT     | Generation number                   |
 | is_legendary      | BOOLEAN | Whether the Pokémon is legendary    | 
 
--- 📘 Table Reference (3): `trainer_pokemon`
+📘 Table Reference (3): `trainer_pokemon`
 
 -- | column           | type     | description                                     |
 -- |------------------|----------|-------------------------------------------------|
@@ -56,8 +53,18 @@
 
 📄 Questions
 
-  
-/*Based on the trainer's Pokémon catch date (catch_date), 
-calculate the number of Pokémon caught in January 2023. */
+
+/*Change the type of Pokémon whose type1 or type2 is "Rock" or "Ground" to "Rock & Ground",
+and keep the others as they are, creating a new column called new_type. 
+Then, output the number of Pokémon species corresponding to each new_type.*/
+
+
+
+
+
+
+
+
+
 
   
