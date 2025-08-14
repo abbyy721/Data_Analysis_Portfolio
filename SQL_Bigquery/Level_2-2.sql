@@ -1,7 +1,7 @@
 /* 
 
 🔹 Level 2 – Advanced SQL Queries
-🔸 Skills used : CASE/WHEN
+🔸 Skills used : CASE/WHEN, IF
 
 📘 Table Reference (1) : `trainer`
 | column                 | type   | description                            |
@@ -74,6 +74,27 @@ GROUP BY New_type
 
 
 --------------------------------------------------------------------------------------------------------------------------
+
+
+/* Create a new column called speed_category that displays "Fast" 
+if a Pokémon’s speed is 70 or higher, and "Slow" otherwise.*/
+
+
+SELECT
+
+FROM `Basic.Pokemon`
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
