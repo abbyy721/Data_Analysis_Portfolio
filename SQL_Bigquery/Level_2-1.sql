@@ -35,7 +35,7 @@
 | generation        | INT     | Generation number                   |
 | is_legendary      | BOOLEAN | Whether the Pokémon is legendary    | 
 
--- 📘 Table Reference (3): `trainer_pokemon`
+📘 Table Reference (3): `trainer_pokemon`
 
 -- | column           | type     | description                                     |
 -- |------------------|----------|-------------------------------------------------|
@@ -73,6 +73,7 @@ SELECT
 FROM `Basic.trainer_pokemon`)
 WHERE catch_date != catch_datetime_kr_date 
 
+  
 -- Step 2: Calculate the number of Pokémon caught in January 2023.
 SELECT
   COUNT (DISTINT id) as cnt_pokemon
