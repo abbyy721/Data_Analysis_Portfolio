@@ -1,3 +1,8 @@
+/* 
+
+🔹 Level 3 – Advanced SQL Queries
+🔸 Skills used : JOIN
+
 
 📘 Table Reference (1) : `trainer`
 | column                 | type   | description                            |
@@ -28,7 +33,7 @@
 | generation        | INT     | Generation number                   |
 | is_legendary      | BOOLEAN | Whether the Pokémon is legendary    | 
 
--- 📘 Table Reference (3): `trainer_pokemon`
+📘 Table Reference (3): `trainer_pokemon`
 
 -- | column           | type     | description                                     |
 -- |------------------|----------|-------------------------------------------------|
