@@ -49,6 +49,101 @@
 -- | status           | STRING   | Status of the Pokémon (e.g., Active, Inactive) |*/
 
 
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+📄 Questions
+
+
+/* Output the number of Pokémon (by species) currently owned by trainers, in descending order of quantity.
+(Here, “currently owned” refers to Pokémon whose status is not "Released") */
+
+  
+SELECT
+  kor_name,
+  COUNT(DISTINCT tp.id) AS pokemon_cnt
+FROM `Basic.trainer_pokemon` AS tp
+LEFT JOIN `Basic.Pokemon` AS p
+ON tp.pokemon_id = p.id
+WHERE tp.status IN ("Active", "Released")
+GROUP BY kor_name
+ORDER BY pokemon_cnt DESC
+
+  
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Count the number of Grass-type Pokémon all trainers have, based on type1, 
+including only those whose status is not "Released". 
+Trainer information is in the trainer_pokemon table, and Pokémon information is in the pokemon table. */
+  
+
+SELECT
+  type1,
+  pokemon_cnt
+FROM (
+  SELECT
+    p.type1,
+    COUNT(DISTINCT tp.id) AS pokemon_cnt
+  FROM `Basic.trainer_pokemon` AS tp
+  LEFT JOIN `Basic.Pokemon` AS p
+  ON tp.pokemon_id = p.id
+  WHERE tp.status IN ("Active", "Training")
+  GROUP BY p.type1)
+WHERE type1 = "Grass"
+
+  
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Compare each trainer’s hometown with the location where they caught a Pokémon, 
+and find the number of trainers who caught a Pokémon in their own hometown (regardless of the Pokémon’s status). 
+Trainer information is in the trainer table, and catch information is in the trainer_pokemon table. */
+
+
+SELECT
+  COUNT (DISTINCT tp.trainer_id) AS cnt_trainer,
+FROM `Basic.trainer_pokemon` AS tp
+LEFT JOIN `Basic.trainer` AS t 
+ON tp.trainer_id = t.id
+WHERE tp.location = t.hometown
+
+  
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Which type1 of Pokémon do Master-rank trainers own the most?
+(The rank information is in the trainer table, the Pokémon type1 information is in the pokemon table, 
+and the ownership information is in the trainer_pokemon table.) */
+
+SELECT
+  COUNT (DISTINCT tp.id) AS pokemon_cnt,
+    type1
+  
+  FROM  `Basic.trainer_pokemon` AS tp
+    LEFT JOIN `Basic.Pokemon` AS p 
+    ON tp.pokemon_id = p.id
+    LEFT JOIN `Basic.trainer` AS t 
+    ON tp.trainer_id = t.id
+    
+  WHERE status IN ("Active", "Training") And achievement_level = "Master"
+GROUP BY type1
+ORDER BY pokemon_cnt DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   
 
 
