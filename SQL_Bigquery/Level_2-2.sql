@@ -59,6 +59,21 @@ and keep the others as they are, creating a new column called new_type.
 Then, output the number of Pokémon species corresponding to each new_type.*/
 
 
+SELECT 
+  New_type, 
+  COUNT(DISTINCT id) AS cnt_newtype 
+FROM ( 
+SELECT
+  *,
+  CASE 
+    WHEN (type1 IN ("Rock", "Ground")) OR (type2 IN ("Rock", "Ground")) 
+    THEN "Rock&Ground" ELSE type1
+  END AS New_type
+FROM `Basic.Pokemon`)
+GROUP BY New_type
+
+
+--------------------------------------------------------------------------------------------------------------------------
 
 
 
