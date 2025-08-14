@@ -132,11 +132,23 @@ GROUP BY type1
 ORDER BY pokemon_cnt DESC
 
 
+--------------------------------------------------------------------------------------------------------------------------
 
 
+/* How many Generation 1 and Generation 2 Pokémon do trainers from Incheon own, respectively?
+(The hometown information is in the trainer table, the generation information is in the pokemon table, 
+and the ownership information is in the trainer_pokemon table.) */
 
-
-
+SELECT
+  p.generation,
+  COUNT (DISTINCT tp.id) AS pokemon_cnt,
+FROM `Basic.trainer_pokemon` AS tp
+  LEFT JOIN `Basic.trainer` AS t 
+  ON tp.trainer_id = t.id
+  LEFT JOIN `Basic.Pokemon` AS p 
+  ON tp.pokemon_id = p.id
+WHERE t.hometown = "Incheon" and p.generation IN (1, 2) and tp.status != "Released"
+GROUP BY p.generation
 
 
 
