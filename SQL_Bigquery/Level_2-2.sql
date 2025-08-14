@@ -186,6 +186,30 @@ FROM (
 GROUP BY new_time
 
 
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* In the Battle table: If the winner_id is the same as player1_id, output "Player 1 wins".
+If it is the same as player2_id, output "Player 2 wins". Otherwise, output "Draw". */ 
+
+
+SELECT
+  player1_id,
+  player2_id,
+  winner_id,
+  CASE 
+    WHEN winner_id = player1_id THEN "Player 1 Wins"
+    WHEN winner_id = player2_id THEN "Player 2 Wins"
+    ELSE "Draw"
+  END AS battle_result
+FROM `Basic.Battle`
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
 
