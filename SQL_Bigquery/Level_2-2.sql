@@ -54,9 +54,9 @@
 📄 Questions
 
 
-/*Change the type of Pokémon whose type1 or type2 is "Rock" or "Ground" to "Rock & Ground",
+/* Change the type of Pokémon whose type1 or type2 is "Rock" or "Ground" to "Rock & Ground",
 and keep the others as they are, creating a new column called new_type. 
-Then, output the number of Pokémon species corresponding to each new_type.*/
+Then, output the number of Pokémon species corresponding to each new_type. */
 
 
 SELECT 
@@ -77,21 +77,68 @@ GROUP BY New_type
 
 
 /* Create a new column called speed_category that displays "Fast" 
-if a Pokémon’s speed is 70 or higher, and "Slow" otherwise.*/
+if a Pokémon’s speed is 70 or higher, and "Slow" otherwise. */
 
 
 SELECT
-
+  *,
+  IF (speed >= 70, "Fast", "Slow") AS speed_category
 FROM `Basic.Pokemon`
 
 
+--------------------------------------------------------------------------------------------------------------------------
+
+  
+/* Create a new column called type_korean that classifies Pokémon according to their type1 as follows:
+"Water" → "물"
+"Fire" → "불" 
+"Electric" → "전기"
+And all other types → "기타" */
 
 
+SELECT
+  id,
+  Kor_name,
+  type1,
+  CASE 
+    WHEN type1 = "Water" THEN "물"
+    WHEN type1 = "Fire" THEN "불"
+    WHEN type1 = "Electric" THEN "전기"
+    ELSE "기타"
+  END AS type_korean 
+FROM `Basic.Pokemon`
 
 
+--------------------------------------------------------------------------------------------------------------------------
+
+  
+/* Classify each Pokémon based on its total score (total) as follows:
+300 or less → "Low"
+301 to 500 → "Medium"
+501 or more → "High"
+Then, output all Pokémon whose classification is "Medium". */
 
 
+SELECT
+  Kor_name, 
+  Total,
+  category_total
+FROM (
+  SELECT
+    Kor_name,
+    total, 
+    CASE
+      WHEN total <= 300 THEN "Low"
+      WHEN total BETWEEN 301 AND 500 THEN "Medium"
+      WHEN total >= 501 THEN "High"
+    END AS category_total
+  FROM `Basic.Pokemon`)
+WHERE category_total = "Medium"
 
+
+--------------------------------------------------------------------------------------------------------------------------
+
+  
 
 
 
