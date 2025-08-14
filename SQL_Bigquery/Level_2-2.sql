@@ -139,8 +139,28 @@ WHERE category_total = "Medium"
 --------------------------------------------------------------------------------------------------------------------------
 
   
+/* Classify each trainer based on their badge count (badge_count) as follows:
+5 or fewer → "Beginner"
+6 to 8 → "Intermediate"
+More than 8 → "Advanced"
+Then, output the number of trainers in each classification. */
 
 
+SELECT
+  New_badge_count_lv,
+  COUNT(id) as cnt_lv
+FROM (
+  SELECT
+    id,
+    name,
+    badge_count,
+    CASE
+      WHEN badge_count <=5 THEN "Beginner" 
+      WHEN badge_count BETWEEN 6 AND 8 THEN "Intermediate" 
+      ELSE "Advanced"
+    END AS New_badge_count_lv
+  FROM `Basic.trainer`)
+GROUP BY New_badge_count_lv
 
 
 
