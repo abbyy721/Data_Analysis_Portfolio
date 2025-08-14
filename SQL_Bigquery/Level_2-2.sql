@@ -163,6 +163,31 @@ FROM (
 GROUP BY New_badge_count_lv
 
 
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Classify trainers based on the date they caught a Pokémon:
+If the catch date is after 2023-07-01, classify as "Recent"; otherwise, classify as "Old".
+Use the catch_datetime column.
+Convert catch_datetime to a DATE after applying the Asia/Seoul time zone (TIMESTAMP → DATE).
+Output the number of trainers in each classification (Old and Recent). */
+
+
+SELECT
+  new_time,
+  COUNT(DISTINCT id) as cnt_new_time
+FROM (
+  SELECT
+    id,
+    catch_datetime,
+    IF (DATE(catch_datetime, "Asia/Seoul") >= "2023-07-01", "Recent", "Old")
+    AS new_time
+  FROM `Basic.trainer_pokemon`)
+GROUP BY new_time
+
+
+
+
 
 
 
