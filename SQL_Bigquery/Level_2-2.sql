@@ -1,7 +1,7 @@
 /* 
 
 🔹 Level 2 – Advanced SQL Queries
-🔸 Skills used : CASE/WHEN, IF, WITH(CTE) 
+🔸 Skills used : CASE/WHEN, IF
 
 📘 Table Reference (1) : `trainer`
 | column                 | type   | description                            |
