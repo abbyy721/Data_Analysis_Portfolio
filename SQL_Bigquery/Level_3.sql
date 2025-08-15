@@ -1,7 +1,7 @@
 /* 
 
 🔹 Level 3 – Advanced SQL Queries
-🔸 Skills used : JOIN
+🔸 Skills used : JOIN,  WITH(CTE) 
 
 
 📘 Table Reference (1) : `trainer`
