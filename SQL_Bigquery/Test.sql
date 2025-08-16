@@ -99,4 +99,60 @@ ON pcl.trainer_id = t.id
 --------------------------------------------------------------------------------------------------------------------------
 
 
+/* Calculate the total attack and defense of all Pokémon caught by each trainer, 
+and find the trainer with the highest combined total.*/
+
+
+SELECT
+  trainer_id,
+  t.name,
+  SUM (attack + defense) AS sum_attack_defense
+FROM `Basic.trainer_pokemon` AS tp 
+LEFT JOIN `Basic.Pokemon` AS p 
+ON tp.pokemon_id = p.id
+LEFT JOIN `Basic.trainer` AS t
+ON tp.trainer_id = t.id
+GROUP BY trainer_id, t.name
+ORDER BY sum_attack_defense DESC
+LIMIT 3
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/* Calculate each Pokémon’s maximum and minimum level, 
+then output the name of the Pokémon with the largest level difference. */
+
+  
+WITH diff_table AS (
+SELECT
+  pokemon_id,
+  max_level - min_level AS diff_level
+FROM (
+  SELECT
+    pokemon_id,
+    MAX (level) AS max_level, 
+    MIN (level) AS min_level, 
+  FROM  `Basic.trainer_pokemon`
+  GROUP BY pokemon_id)
+ORDER BY diff_level DESC
+LIMIT 1)
+
+SELECT
+  kor_name,
+  pokemon_id,
+  d.diff_level
+FROM diff_table AS d
+LEFT JOIN `Basic.Pokemon` AS p 
+ON d.pokemon_id = p.id
+
+
+
+
+
+
+
+
+
+
 
