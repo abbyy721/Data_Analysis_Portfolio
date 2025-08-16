@@ -147,10 +147,28 @@ LEFT JOIN `Basic.Pokemon` AS p
 ON d.pokemon_id = p.id
 
 
+--------------------------------------------------------------------------------------------------------------------------
 
 
+/* For each trainer, calculate the number of Pokémon they own with attack ≥ 100 and 
+the number with attack < 100. Output the trainer’s name along with both counts. */
 
 
+SELECT
+  trainer_id,
+  name,
+  COUNTIF (attack >= 100) AS pokemon_cnt_above100, 
+  COUNTIF (attack < 100) AS pokemon_cnt_below100
+FROM `Basic.trainer_pokemon` AS tp 
+LEFT JOIN `Basic.Pokemon` AS p 
+ON tp.pokemon_id = p.id 
+LEFT JOIN `Basic.trainer` AS t
+ON tp.trainer_id = t.id
+WHERE tp.status IN ("Active", "Training")
+GROUP BY trainer_id, name
+
+
+--------------------------------------------------------------------------------------------------------------------------
 
 
 
