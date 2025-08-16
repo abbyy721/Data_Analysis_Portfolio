@@ -16,6 +16,9 @@ ORDER BY avg_level DESC
 LIMIT 3
 
 
+--------------------------------------------------------------------------------------------------------------------------
+
+  
 /* For each Pokémon type1, output the type1, Pokémon name, 
 and capture count of the most frequently captured Pokémon 
 (regardless of release status). */ 
@@ -33,7 +36,9 @@ ORDER BY cnt_pokemon DESC
 LIMIT 3
 
 
+--------------------------------------------------------------------------------------------------------------------------
 
+  
 /* How many legendary and normal Pokémon do trainers who own 
 at least one legendary Pokémon have? (Also output the trainer’s name.) */
 
@@ -53,11 +58,12 @@ GROUP BY tp.trainer_id, t.name
 HAVING legendary_cnt != 0
 
 
+--------------------------------------------------------------------------------------------------------------------------
 
+  
 /* Output the trainer ID, trainer name, number of wins, number of Pokémon owned, 
 and the average Pokémon level for the trainer with the most wins. 
 Round the average level to two decimal places. */
-
 
 
 WITH winner_trainer AS (
@@ -90,6 +96,7 @@ LEFT JOIN `Basic.trainer` as t
 ON pcl.trainer_id = t.id
 
 
+--------------------------------------------------------------------------------------------------------------------------
 
 
 
