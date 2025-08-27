@@ -1,7 +1,7 @@
 /* 
 
 🔹 Advanced SQL Queries - (1)
-🔸 Skills used : ARRAY, STRUCT, UNNEST
+🔸 Skills used : ARRAY, STRUCT, UNNEST, PIVOT 
 
 --------------------------------------------------------------------------------------------------------------------------
 
