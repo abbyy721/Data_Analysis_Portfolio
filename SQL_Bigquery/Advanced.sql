@@ -236,9 +236,58 @@ GROUP BY user_id
 --------------------------------------------------------------------------------------------------------------------------
 
 
+/* Given the raw 'app_logs' data with event parameters stored as key–value pairs,  
+write a query to transform the data into the following table structure: 
+
+| event_date | steps_number | event_name_screen         | cnt |
+|------------|--------------|---------------------------|-----|
+| 2022-08-01 | 1            | screen_view-welcome       | 156 |
+| 2022-08-01 | 2            | screen_view-home          | 129 |
+| 2022-08-01 | 3            | screen_view-food_category | 51  |*/
 
 
+WITH base AS (
+SELECT
+  event_date, 
+  DATETIME(TIMESTAMP_MICROS(event_timestamp), 'Asia/Seoul') AS event_datetime,
+  CONCAT (event_name,'-',value.string_value) AS event_name_screen,
+  user_id,
+  user_pseudo_id
+FROM `Advanced.app_logs`
+CROSS JOIN UNNEST (event_params) AS params
+WHERE event_date BETWEEN '2022-08-01' AND '2022-08-22'
+  AND key = 'firebase_screen' 
+  AND event_name IN ('screen_view','click_payment')
+), 
+base2 AS (
+SELECT
+  event_date,
+  base.event_name_screen,
+  CASE
+    WHEN base.event_name_screen = 'screen_view-welcome' THEN 1 
+    WHEN base.event_name_screen = 'screen_view-home' THEN 2
+    WHEN base.event_name_screen = 'screen_view-food_category' THEN 3 
+    WHEN base.event_name_screen = 'screen_view-restaurant' THEN 4
+    WHEN base.event_name_screen = 'screen_view-cart' THEN 5
+    WHEN base.event_name_screen = 'click_payment-cart' THEN 6
+    ELSE NULL END AS steps_number,
+  user_id,
+  user_pseudo_id,
+FROM base 
+ORDER BY steps_number)
 
+SELECT
+  event_date,
+  steps_number,
+  event_name_screen,
+  COUNT (DISTINCT (user_pseudo_id)) AS cnt,
+FROM base2
+WHERE steps_number IS NOT NULL 
+GROUP BY event_date, steps_number, event_name_screen
+ORDER BY event_date, steps_number, event_name_screen
+
+
+--------------------------------------------------------------------------------------------------------------------------
 
 
 
