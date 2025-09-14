@@ -1,6 +1,6 @@
 /* 
 
-🔹 Level 2 – Basic SQL Queries
+🔹 Basic SQL Queries - Level 2
 🔸 Skills used : 
 - STRING FUNCTIONS (CONCAT, SPLIT, REPLACE, TRIM, UPPER)
 - DATE/TIME FUNCTIONS (TIMESTAMP, DATETIME, EXTRACT, TRUNC, PARSE, FORMAT, LAST_DAY, DATETIME_DIFF )
