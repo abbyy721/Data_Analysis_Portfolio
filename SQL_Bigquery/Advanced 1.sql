@@ -1,6 +1,6 @@
 /* 
 
-🔹 Advanced SQL Queries - (1)
+🔹 Advanced SQL Queries - Level 1
 🔸 Skills used : ARRAY, STRUCT, UNNEST, PIVOT 
 
 --------------------------------------------------------------------------------------------------------------------------
