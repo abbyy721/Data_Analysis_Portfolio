@@ -1,6 +1,6 @@
 /* 
 
-🔹 Intermediate 2 – Advanced SQL Queries
+🔹 Basic SQL Queries - Level 4
 🔸 Skills used : CASE/WHEN, IF
 
 📘 Table Reference (1) : `trainer`
