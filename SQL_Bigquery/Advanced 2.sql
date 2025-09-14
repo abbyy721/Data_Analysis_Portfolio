@@ -1,6 +1,6 @@
 /* 
 
-🔹 Advanced SQL Queries - (2)
+🔹 Advanced SQL Queries - Level 2
 🔸 Skills used : WINDOW FUNCTIONS (LEAD, LAG, FIRST_VALUE, LAST_VALUE), FRAME FUNCTIONS
 
 --------------------------------------------------------------------------------------------------------------------------
