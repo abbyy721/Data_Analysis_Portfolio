@@ -5,9 +5,14 @@ Each file represents different levels of SQL difficulty and practice topics.
 ```
 ## 📁 Repository Structure
 📁 SQL_Bigquery/
-├── Level_1.sql # Basic SELECT queries
-├── Level_2.sql # GROUP BY, HAVING, Aggregation
-├── Level_3.sql # JOINs, subqueries, more advanced patterns
+├── Basic 1.sql #SELECT, FROM, WHERE, GROUP BY, ORDER BY, HAVING
+├── Basic 2.sql #STRING FUNCTIONS, DATE/TIME FUNCTIONS (1)
+├── Basic 3.sql #STRING FUNCTIONS, DATE/TIME FUNCTIONS (2)
+├── Basic 4.sql #CASE/WHEN, IF
+├── Basic 5.sql #JOIN, WITH(CTE)
+├── Advanced 1.sql #ARRAY, STRUCT, UNNEST, PIVOT 
+├── Advanced 2.sql #WINDOW FUNCTIONS, FRAME FUNCTIONS
+
 📄 README.md # Overview of this project
 ```
 ## ✍️ Notes
