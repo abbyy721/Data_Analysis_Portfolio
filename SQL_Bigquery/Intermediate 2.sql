@@ -1,6 +1,6 @@
 /* 
 
-🔹 Level 2 – Advanced SQL Queries
+🔹 Intermediate 2 – Advanced SQL Queries
 🔸 Skills used : CASE/WHEN, IF
 
 📘 Table Reference (1) : `trainer`
