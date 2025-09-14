@@ -1,6 +1,6 @@
 /* 
 
-🔹 Intermediate 1 – Advanced SQL Queries
+🔹 Basic SQL Queries - Level 3
 🔸 Skills used : 
 - STRING FUNCTIONS (CONCAT, SPLIT, REPLACE, TRIM, UPPER)
 - DATE/TIME FUNCTIONS (TIMESTAMP, DATETIME, EXTRACT, TRUNC, PARSE, FORMAT, LAST_DAY, DATETIME_DIFF )
