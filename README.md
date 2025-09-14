@@ -12,7 +12,6 @@ Each file represents different levels of SQL difficulty and practice topics.
 ```
 ## ✍️ Notes
 
-- Practiced while following a YouTube tutorial series on SQL for BigQuery
 - Dataset: Custom-created dataset uploaded to my own Google BigQuery project
 - Purpose: To deepen understanding of SQL and BigQuery through hands-on exercises
 
