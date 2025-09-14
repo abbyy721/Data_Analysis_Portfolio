@@ -1,6 +1,6 @@
 /* 
 
-🔹 Level 3 – Advanced SQL Queries
+🔹 Basic SQL Queries - Level 5
 🔸 Skills used : JOIN,  WITH(CTE) 
 
 
