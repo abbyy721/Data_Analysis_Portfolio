@@ -1,6 +1,6 @@
 /* 
 
-🔹 Level 1 – Basic SQL Queries
+🔹 Basic SQL Queries - Level 1
 🔸 Skills used : SELECT, FROM, WHERE, GROUP BY, ORDER BY, HAVING
 
 
